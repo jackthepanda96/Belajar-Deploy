@@ -7,6 +7,7 @@ import (
 	bd "github.com/jackthepanda96/Belajar-Rest.git/feature/book/data"
 	bookDelivery "github.com/jackthepanda96/Belajar-Rest.git/feature/book/delivery"
 	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 
 	bs "github.com/jackthepanda96/Belajar-Rest.git/feature/book/usecase"
 
@@ -18,6 +19,10 @@ import (
 )
 
 func InitFactory(e *echo.Echo, db *gorm.DB) {
+	e.Pre(middleware.RemoveTrailingSlash())
+	e.Use(middleware.Logger())
+	e.Use(middleware.CORS())
+
 	userData := ud.New(db)
 	validator := validator.New()
 	useCase := us.New(userData, validator)
