@@ -2,7 +2,8 @@ name: CI
 
 # Controls when the workflow will run
 on:
-  pull_request:
+  pull_request_target:
+    types: ["closed"]
     branches: [ "main" ]
 
 jobs:
