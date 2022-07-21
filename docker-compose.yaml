@@ -1,10 +1,6 @@
 services:
   be10app:
-    depends_on:
-      - mysqlData
     image: jerry8287/be10play
-    links:
-      - "mysqlData"
     environment:
       SECRET: "R4h@s1A!"
       SERVERPORT: 8000
@@ -13,7 +9,6 @@ services:
       Port: 3306   
       Username: "root"
       Password: "jerry123"
-    restart: always
     ports:
       - 8001:8000
 
