@@ -28,3 +28,12 @@ jobs:
         with:
           push: true
           tags: jerry8287/be10play:latest
+          
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEYSAYA }}
+          port: ${{ secrets.PORT }}
+          script: mkdir iniDariGithub
